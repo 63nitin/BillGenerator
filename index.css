@@ -118,6 +118,18 @@ button:hover {
   background-color: var(--danger-dark);
 }
 
+#content {
+  padding: 40px 30px; /* Add top, bottom and side padding */
+}
+
+#name {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+
 /* Controls Panel */
 .controls {
   flex: 1 1 320px;
