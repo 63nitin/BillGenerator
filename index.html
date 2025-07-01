@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generator</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Add this in your <head> tag -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div style="display:flex; justify-content: space-between;">
+    <div>
+        <h1>Bill Generator...</h1>
+        <div class="input-row">
+  <input type="text" id="shop" placeholder="Shop name">
+  <button id="nameAdd" onclick="getShopName()">ADD</button>
+</div>
+        <input type="text" id="item" placeholder="Item name">
+        <input type="number" id="price" placeholder="Price">
+        <input type="number" id="quantity" placeholder="Quantity">
+        <br>
+        <div class="button-group">
+  <button id="itemAdd" onclick="addItem()">ADD ITEM</button>
+  <button id="download" onclick="downloadBill()">Download Bill</button>
+</div>
+
+    </div>
+    <div id="preview">
+        <h1>Preview</h1>
+        <div id="content">
+            <h2 id="name">Shop Name</h2>
+        <div id="billPreview">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="itemList">
+                    
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td id="totalAmount">0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        </div>
+
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
