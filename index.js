@@ -73,3 +73,40 @@ function downloadBill() {
         removeButtons.forEach(btn => btn.style.display = "inline-block");
     });
 }
+
+async function sharePDF() {
+  const billContent = document.querySelector("#content");
+
+  const removeButtons = billContent.querySelectorAll(".remove-item");
+  removeButtons.forEach(btn => btn.style.display = "none");
+
+  const opt = {
+    margin: 0.5,
+    filename: 'bill.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  try {
+    const worker = html2pdf().set(opt).from(billContent).outputPdf('blob');
+
+    const blob = await worker;
+    const file = new File([blob], 'bill.pdf', { type: 'application/pdf' });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        title: 'Bill PDF',
+        text: 'Here is your bill.',
+        files: [file]
+      });
+    } else {
+      alert('Your browser does not support file sharing. Try manually downloading and sharing.');
+    }
+  } catch (err) {
+    console.error('Sharing failed:', err);
+    alert('Could not share the PDF. Try again.');
+  } finally {
+    removeButtons.forEach(btn => btn.style.display = "inline-block");
+  }
+}
