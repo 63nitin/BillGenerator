@@ -277,3 +277,389 @@ h1, h2, h3 {
   font-weight: 600;
   margin-bottom: 1rem;
 }
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .controls,
+  #preview {
+    width: 100%;
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .shop-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .shop-header p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #billPreview table {
+    font-size: 0.85rem;
+    min-width: 600px; /* Ensures table doesn't squash too much */
+  }
+
+  #billPreview {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-row input,
+  .input-row button {
+    width: 100%;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+
+  .remove-item {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  #content {
+    padding: 20px 15px;
+  }
+
+  .button-group {
+    margin-top: 1rem;
+    gap: 10px;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+
+  .mt-2 {
+    margin-top: 1rem;
+  }
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  .shop-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .shop-header p {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .controls {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  #preview {
+    padding: 20px;
+  }
+
+  #billPreview table {
+    font-size: 0.8rem;
+  }
+
+  .input-row input,
+  .input-row button {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  .input-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-row input {
+    width: 100%;
+  }
+
+  .input-row button {
+    width: auto;
+    flex: none;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .controls, #preview {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .shop-header {
+    margin-bottom: 1.5rem;
+  }
+
+  #billPreview {
+    overflow-x: auto;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .shop-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .shop-header p {
+    font-size: 0.7rem;
+  }
+
+  #billPreview th,
+  #billPreview td {
+    padding: 8px;
+    font-size: 0.75rem;
+  }
+
+  #billPreview tfoot td {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 480px) {
+  .total-row {
+    font-size: 1rem;
+  }
+
+  .remove-item {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .input-group input[type="text"],
+  .input-group input[type="number"] {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .controls {
+    flex: 1 1 auto;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  #preview {
+    flex: 1 1 auto;
+    padding: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .input-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-row input {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .input-row button {
+    width: auto;
+    flex: none;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .controls, #preview {
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .shop-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .shop-header p {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 480px) {
+  #billPreview table {
+    font-size: 0.8rem;
+    min-width: 300px; /* Ensures table doesn't squash too much */
+  }
+
+  #billPreview {
+    overflow-x: auto;
+  }
+}
+@media (max-width: 480px) {
+  .input-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-row input,
+  .input-row button {
+    width: 100%;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .remove-item {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  #content {
+    padding: 20px 15px;
+  }
+
+  .button-group {
+    margin-top: 1rem;
+    gap: 10px;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+
+  .mt-2 {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  .shop-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .shop-header p {
+    font-size: 0.7rem;
+  }
+
+  #billPreview th,
+  #billPreview td {
+    padding: 8px;
+    font-size: 0.75rem;
+  }
+
+  #billPreview tfoot td {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 480px) {
+  .total-row {
+    font-size: 1rem;
+  }
+
+  .remove-item {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .input-group input[type="text"],
+  .input-group input[type="number"] {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

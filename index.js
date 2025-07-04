@@ -44,56 +44,70 @@ function removeItem(button) {
 }
 
 function downloadBill() {
-    const billContent = document.querySelector("#content");
-
-    // Hide all remove buttons
-    const removeButtons = billContent.querySelectorAll(".remove-item");
-    removeButtons.forEach(btn => btn.style.display = "none");
-
-    const options = {
-        filename: 'bill.pdf',
-        margin: 0,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: {
-            unit: 'in',
-            format: 'letter',
-            orientation: 'portrait'
-        }
-    };
-
-    html2pdf().set(options).from(billContent).save().then(() => {
-        // Show all remove buttons back after saving
-        removeButtons.forEach(btn => btn.style.display = "inline-block");
-    }).catch(err => {
-        console.error('Error generating PDF:', err);
-        alert('Failed to download the bill. Please try again.');
-
-        // Even in error case, make sure buttons are restored
-        removeButtons.forEach(btn => btn.style.display = "inline-block");
-    });
-}
-
-async function sharePDF() {
   const billContent = document.querySelector("#content");
 
+  // Hide remove buttons before export
   const removeButtons = billContent.querySelectorAll(".remove-item");
   removeButtons.forEach(btn => btn.style.display = "none");
 
   const opt = {
-    margin: 0.5,
+    margin:       0.5,
+    filename:     'bill.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  {
+      scale: 2,
+      useCORS: true,
+      scrollX: 0,
+      scrollY: 0
+    },
+    jsPDF: {
+      unit: 'in',
+      format: 'letter',
+      orientation: 'portrait'
+    },
+    pagebreak: { mode: ['css', 'legacy'] }  // 👈 important for table breaking
+  };
+
+  html2pdf().set(opt).from(billContent).save().then(() => {
+    // Restore buttons
+    removeButtons.forEach(btn => btn.style.display = "inline-block");
+  }).catch(err => {
+    console.error('PDF Download Error:', err);
+    removeButtons.forEach(btn => btn.style.display = "inline-block");
+  });
+}
+
+
+async function sharePDF() {
+  const billContent = document.querySelector("#content");
+
+  // Hide remove buttons before export
+  const removeButtons = billContent.querySelectorAll(".remove-item");
+  removeButtons.forEach(btn => btn.style.display = "none");
+
+  const options = {
+    margin: 0.5, // half inch margin
     filename: 'bill.pdf',
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      scrollX: 0,
+      scrollY: 0
+    },
+    jsPDF: {
+      unit: 'in',
+      format: 'letter',
+      orientation: 'portrait'
+    },
+    pagebreak: { mode: ['css', 'legacy'] }  // 🔥 crucial for table splitting
   };
 
   try {
-    const worker = html2pdf().set(opt).from(billContent).outputPdf('blob');
+    const pdfBlob = await html2pdf().set(options).from(billContent).outputPdf('blob');
+    const file = new File([pdfBlob], 'bill.pdf', { type: 'application/pdf' });
 
-    const blob = await worker;
-    const file = new File([blob], 'bill.pdf', { type: 'application/pdf' });
-
+    // Check if Web Share API with file support is available
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({
         title: 'Bill PDF',
@@ -101,12 +115,13 @@ async function sharePDF() {
         files: [file]
       });
     } else {
-      alert('Your browser does not support file sharing. Try manually downloading and sharing.');
+      alert('Sharing is not supported on this browser. Please download the PDF manually.');
     }
   } catch (err) {
-    console.error('Sharing failed:', err);
-    alert('Could not share the PDF. Try again.');
+    console.error('Error while sharing PDF:', err);
+    alert('Something went wrong while sharing the PDF.');
   } finally {
+    // Restore remove buttons
     removeButtons.forEach(btn => btn.style.display = "inline-block");
   }
 }
